@@ -3,7 +3,7 @@ import { apiGetUser } from '../tools/api'
 
 export type UserContextState = {
   login: string,
-  id: number,
+  id: number | null,
   node_id: string,
   avatar_url: string,
   gravatar_id: string,
@@ -19,39 +19,71 @@ export type UserContextState = {
   events_url: string,
   received_events_url: string,
   type: string,
-  site_admin: false,
+  site_admin: boolean | null,
   name: string,
   company: string,
   blog: string,
   location: string,
   email: string,
-  hireable: false,
+  hireable: boolean | null,
   bio: string,
   twitter_username: string,
-  public_repos: number,
-  public_gists: number,
-  followers: number,
-  following: number,
+  public_repos: number | null,
+  public_gists: number | null,
+  followers: number | null,
+  following: number | null,
   created_at: string,
   updated_at: string
-} | {}
+}
 
 export type UserContextProps = UserContextState & {
-  updateUserContext: (values: Partial<UserContextState>) => void
   getUser: (userName: string) => void
+  getState: () => UserContextState
 }
 
 const initialState: UserContextState = {
+  login: '',
+  id: null,
+  node_id: '',
+  avatar_url: '',
+  gravatar_id: '',
+  url: '',
+  html_url: '',
+  followers_url: '',
+  following_url: '',
+  gists_url: '',
+  starred_url: '',
+  subscriptions_url: '',
+  organizations_url: '',
+  repos_url: '',
+  events_url: '',
+  received_events_url: '',
+  type: '',
+  site_admin: null,
+  name: '',
+  company: '',
+  blog: '',
+  location: '',
+  email: '',
+  hireable: null,
+  bio: '',
+  twitter_username: '',
+  public_repos: null,
+  public_gists: null,
+  followers: null,
+  following: null,
+  created_at: '',
+  updated_at: ''
 }
 
 export const UserContext = createContext<UserContextProps>(initialState as UserContextProps)
 
 const UserContextProvider: FC = ({ children }) => {
   const [state, setState] = useState(initialState)
-  const updateUserContext = (values: Partial<UserContextState>): void => setState({ ...state, ...values })
-  const getUser = (userName: string): void => setState({ ...apiGetUser(userName) })
+  const getUser = async (userName: string): Promise<void> => setState({ ...await apiGetUser(userName) })
+  const getState = (): UserContextState => state
 
-  return (<UserContext.Provider value={{ ...state, updateUserContext, getUser }}>{children}</UserContext.Provider>)
+  return (<UserContext.Provider value={{ ...state, getUser, getState }}>{children}</UserContext.Provider>)
 }
 
 export default UserContextProvider
