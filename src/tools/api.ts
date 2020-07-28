@@ -1,14 +1,13 @@
 import { UserContextState } from './../contexts/user'
-import { Octokit } from '@octokit/core';
+// import { UserContextState } from './../contexts/user'
+import { Octokit } from '@octokit/core'
 
-const gitHubToken = '2d1695c4de7af9fa975f68adc1757eda48e2a0ea';
-
-export const apiGetUser = async (userName: string): Promise<UserContextState> => {
-  const octokit = new Octokit({ auth: gitHubToken })
+export const apiGetUser = async <T>(userName: string): Promise<UserContextState> => {
+  const octokit = new Octokit()
   const response = await octokit.request(`GET /users/${userName}`, {
     org: "octokit",
     type: "private",
-  })
+  }).then((res) => res.data).catch((err) => err)
 
-  return response
+  return response.data
 }
