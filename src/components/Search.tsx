@@ -14,7 +14,7 @@ export const Search: FC = () => {
 
   const handleSubmitClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    getUser(userName)
+    userName.length > 0 && getUser(userName)
   }
 
   return (
