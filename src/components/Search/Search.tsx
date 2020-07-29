@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/esm/Container'
 import loupe from './loupe.svg'
+import Row from 'react-bootstrap/esm/Row'
 
 export const Search: FC = () => {
   const { getUserData } = useContext<UserContextProps>(UserContext)
@@ -26,19 +27,17 @@ export const Search: FC = () => {
   return (
     <header>
       <Container>
-        <Form>
-          <Form.Row>
-            <Col xs={8}>
+        <Row>
+          <Col>
+            <Form>
               <img className="loupe" src={loupe} alt="search-loupe" />
               <Form.Control type="name" placeholder="Search for user" onChange={handleChange} />
-            </Col>
-            <Col xs={4}>
               <Button variant="primary" type="submit" onClick={handleSubmitClick}>
                 Search
-            </Button>
-            </Col>
-          </Form.Row>
-        </Form>
+              </Button>
+            </Form>
+          </Col>
+        </Row>
       </Container>
     </header>
   )
