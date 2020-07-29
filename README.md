@@ -6,4 +6,4 @@ Fetches basic Github user info. Uses Oktokit and react-bootstrap.
 
 ## Usage
 
-See `create-react-app` usage.
+See [Create React App](https://github.com/facebook/create-react-app) usage.
