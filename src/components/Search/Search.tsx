@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState, useEffect } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import { UserContext, UserContextProps } from '../../contexts/user'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'

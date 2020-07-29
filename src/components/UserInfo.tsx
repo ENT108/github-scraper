@@ -10,8 +10,6 @@ export const UserInfo: FC = () => {
   const { getState } = useContext(UserContext)
   const { details }: UserContextState = getState()
 
-  console.log(details)
-
   return (
     <section className="user">
       <Container>
