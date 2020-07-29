@@ -10,10 +10,12 @@ export const UserInfo: FC = () => {
   const { getState } = useContext(UserContext)
   const { details }: UserContextState = getState()
 
+  console.log(details)
+
   return (
     <section className="user">
       <Container>
-        {details?.login?.length ?
+        {Boolean(details?.login?.length) &&
           <>
             <Row>
               <Col>
@@ -27,8 +29,8 @@ export const UserInfo: FC = () => {
               </Col>
             </Row>
           </>
-          : <><h3>None found</h3></>
         }
+        {Boolean(details?.notFound) && <span className="userNotFound">User not found</span>}
       </Container>
     </section>
   )

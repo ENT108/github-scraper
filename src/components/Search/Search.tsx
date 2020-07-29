@@ -20,10 +20,6 @@ export const Search: FC = () => {
     userName.length > 0 && getUserData(userName)
   }
 
-  useEffect(() => {
-    getUserData('grenade')
-  }, [])
-
   return (
     <header>
       <Container>

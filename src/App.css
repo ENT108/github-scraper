@@ -90,7 +90,8 @@ section.repos {
   margin-top: 32px;
 }
 
-section.repos .header {
+section.repos .header,
+.userNotFound {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;

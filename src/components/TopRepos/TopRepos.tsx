@@ -9,14 +9,18 @@ export const TopRepos: FC = () => {
   const { repos }: UserContextState = getState()
 
   return (
-    <Container>
-      <section className="repos">
-        <span className="header">Top Repositories</span>
-        {
-          repos.map((repo: Repo) =>
-            <RepoPill name={repo.name} url={repo.html_url} key={repo.name} />)
-        }
-      </section>
-    </Container>
+    <>
+      {Boolean(repos.length) &&
+        <Container>
+          <section className="repos">
+            <span className="header">Top Repositories</span>
+            {
+              repos.map((repo: Repo) =>
+                <RepoPill name={repo.name} url={repo.html_url} key={repo.name} />)
+            }
+          </section>
+        </Container>
+      }
+    </>
   )
 }

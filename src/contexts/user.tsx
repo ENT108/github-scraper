@@ -1,13 +1,13 @@
 import React, { createContext, FC, useState } from 'react'
 import { apiGetUser, apiGetRepos } from '../tools/api'
-import { UserContextState } from './user.type'
+import { UserContextState, Details } from './user.type'
 
 export type UserContextProps = UserContextState & {
   getUserData: (userName: string) => void
   getState: () => UserContextState
 }
 
-const initialState: UserContextState = {
+export const userContextinitialState: UserContextState = {
   details: {
     login: '',
     id: null,
@@ -45,14 +45,19 @@ const initialState: UserContextState = {
   repos: [],
 }
 
-export const UserContext = createContext<UserContextProps>(initialState as UserContextProps)
+export const userNotFound: Details = {
+  notFound: true,
+  ...userContextinitialState.details
+}
+
+export const UserContext = createContext<UserContextProps>(userContextinitialState as UserContextProps)
 
 const UserContextProvider: FC = ({ children }) => {
-  const [state, setState] = useState(initialState)
+  const [state, setState] = useState(userContextinitialState)
   const getUserData = async (userName: string): Promise<void> =>
     setState({
       details: { ...await apiGetUser(userName) },
-      repos: [...await apiGetRepos(userName)].sort((a, b) => (a.stargazers_count < b.stargazers_count) ? 1 : -1).slice(0, 3)
+      repos: [...await apiGetRepos(userName)]
     })
   const getState = (): UserContextState => state
 
