@@ -10,9 +10,10 @@ import Row from 'react-bootstrap/Row'
 export const Search: FC = () => {
   const { getUserData } = useContext<UserContextProps>(UserContext)
   const [userName, setUserName] = useState<string>('')
+  const btnDisabled: boolean = !userName.length
 
   const handleChange = (e: React.ChangeEvent<any>) => {
-    setUserName(e.target.value)
+    setUserName(e.target.value.replace(/ /g, ''))
   }
 
   const handleSubmitClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -28,7 +29,7 @@ export const Search: FC = () => {
             <Form>
               <img className="loupe" src={loupe} alt="search-loupe" />
               <Form.Control type="name" placeholder="Search for user" onChange={handleChange} />
-              <Button variant="primary" type="submit" onClick={handleSubmitClick}>
+              <Button variant="primary" type="submit" onClick={handleSubmitClick} disabled={btnDisabled} >
                 Search
               </Button>
             </Form>
