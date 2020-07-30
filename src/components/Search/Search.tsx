@@ -3,9 +3,9 @@ import { UserContext, UserContextProps } from '../../contexts/user'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/esm/Container'
+import Container from 'react-bootstrap/Container'
 import loupe from './loupe.svg'
-import Row from 'react-bootstrap/esm/Row'
+import Row from 'react-bootstrap/Row'
 
 export const Search: FC = () => {
   const { getUserData } = useContext<UserContextProps>(UserContext)

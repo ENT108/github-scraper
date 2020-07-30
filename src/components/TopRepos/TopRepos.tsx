@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react'
 import { UserContextState, Repo } from '../../contexts/user.type'
 import { UserContext } from '../../contexts/user'
 import { RepoPill } from './RepoPill'
-import Container from 'react-bootstrap/esm/Container'
+import Container from 'react-bootstrap/Container'
 
 export const TopRepos: FC = () => {
   const { getState } = useContext(UserContext)

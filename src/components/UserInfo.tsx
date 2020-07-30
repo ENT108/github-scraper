@@ -4,7 +4,7 @@ import { UserContextState } from '../contexts/user.type'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
-import Container from 'react-bootstrap/esm/Container'
+import Container from 'react-bootstrap/Container'
 
 export const UserInfo: FC = () => {
   const { getState } = useContext(UserContext)
