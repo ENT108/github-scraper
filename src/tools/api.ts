@@ -1,7 +1,8 @@
-apiimport { Details, Repo } from './../contexts/user.type'
+import { Details, Repo } from './../contexts/user.type'
 import { Octokit } from '@octokit/core'
 import { userNotFound } from '../contexts/user'
 
+// TODO provide github token to run more than 60 queries per hour
 const token = ''
 const octokit = new Octokit({ auth: token })
 
