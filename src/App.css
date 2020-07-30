@@ -99,6 +99,14 @@ section.repos .header,
   color: rgba(0, 0, 0, 0.87);
 }
 
+section.repos a {
+  padding-left: 14px;
+}
+
+section.repos a:hover {
+  text-decoration: none;
+}
+
 .repoPill {
   display: flex;
   align-items: center;
@@ -107,8 +115,4 @@ section.repos .header,
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   margin-top: 16px;
-}
-
-.repoPill a {
-  margin-left: 14px;
 }

@@ -12,9 +12,9 @@ export const RepoPill: FC<RepoPillProps> = ({ name, url }) => {
   return (
     <Row>
       <Col>
-        <div className="repoPill">
-          <a href={url}>{name}</a>
-        </div>
+        <a className="repoPill" href={url}>
+          {name}
+        </a>
       </Col>
     </Row>
   )
